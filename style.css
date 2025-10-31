@@ -1,0 +1,235 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Open+Sans:wght@400;800&display=swap'); */
+
+/* Variáveis CSS para Manutenção Fácil */
+:root {
+    /* Cores */
+    --color-primary-blue: #5865f2; 
+    --color-dark: #23272a;
+    --color-light-gray: #f6f6f6;
+    --color-white: #FFF;
+
+    /* Fontes */
+    --font-heading: 'Luckiest Guy', cursive;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* GERAL (Reset e Base) */
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    /* Corrigindo o problema de largura: body se ajusta por padrão. */
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Tipografia Base */
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-dark);
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--color-white); 
+}
+
+h2 {
+    font-size: 2rem; 
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+/* Layouts e Utilidades Reutilizáveis */
+
+.container {
+    width: 90%; 
+    max-width: 75rem; 
+    margin: 0 auto;
+}
+
+.bg-gray {
+    background-color: var(--color-light-gray);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* BOTÕES (Classes Reutilizáveis) */
+.btn {
+    width: 100%;
+    height: 3.375rem;
+    padding: 0 1.5rem;
+    border-radius: 1.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease; 
+    font-family: var(--font-body); /* Adiciona a fonte Open Sans nos botões */
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--color-white);
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.btn-secondary {
+    background: var(--color-dark);
+    color: var(--color-white);
+}
+
+.btn:hover {
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+    transform: translateY(-2px);
+}
+
+/* HEADER */
+
+header {
+    background: url('/imagens/header-background-mobile.png') no-repeat center/cover;
+    width: 100%;
+    padding: 1.5rem 0; 
+}
+
+header .container {
+    /* O container controla a largura e o padding lateral */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+}
+
+header #header-content h1 {
+    /* Ajusta para centralizar e melhorar o espaçamento */
+    max-width: 17.375rem; 
+    margin: 3rem auto 1.5rem auto; 
+}
+
+/* MAIN - Blocos de Conteúdo (Feature Blocks) */
+
+.feature-block {
+    padding: 2.5rem 0; 
+}
+
+.feature-block .container {
+    display: flex;
+    flex-direction: column; /* Padrão mobile: coluna */
+    gap: 1.5rem; 
+    align-items: center;
+}
+
+.feature-block .feature-image img {
+   width: 100%;
+   display: block; 
+}
+
+.feature-block .feature-info h2 {
+   margin-bottom: 1rem;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: var(--color-dark);
+    padding: 2.5rem 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer svg {
+    width: 10.125rem;
+    height: 2.8125rem;
+}
+
+/* MEDIA QUERIES - Desktop (min-width: 1280px) */
+
+@media screen and (min-width: 1280px) {
+    /* Tamanhos de Fonte */
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    /* HEADER */
+    header {
+        background: url('/imagens/header-background.png') no-repeat center/cover;
+        padding: 5rem 0; 
+    }
+
+    header .container {
+        max-width: 50rem; 
+    }
+
+    header #header-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        width: auto; 
+        margin-bottom: 0 !important;
+    }
+
+    .btn-secondary {
+      margin-left: 1rem;
+    }
+
+    /* MAIN - Blocos de Conteúdo */
+
+    .feature-block .container {
+        flex-direction: row; /* Layout padrão desktop: linha */
+        align-items: center;
+        gap: 4rem; /* Aumenta o espaçamento */
+        padding: 4rem 0; /* Aumenta o padding interno do container */
+    }
+
+    .feature-block .feature-info {
+        flex: 1; 
+        max-width: 30rem; /* Limita a largura do texto para melhor leitura */
+    }
+    
+    .feature-block .feature-image {
+        flex: 1;
+    }
+
+    .reverse-on-desktop {
+        flex-direction: row-reverse; /* Inverte a ordem da seção do canal */
+    }
+
+    .column-layout {
+        flex-direction: column; /* Layout de coluna para a seção de conexão */
+        text-align: center;
+        max-width: 65rem;
+    }
+    
+    .column-layout .feature-info {
+        max-width: 48rem; /* Aumenta a largura do texto na seção de coluna */
+        margin-bottom: 2rem;
+    }
+}
