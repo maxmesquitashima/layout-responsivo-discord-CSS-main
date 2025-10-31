@@ -1,6 +1,9 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Open+Sans:wght@400;800&display=swap'); */
 
-/* Variáveis CSS para Manutenção Fácil */
+/* -------------------------------------------------------------------------- */
+/* I. Variáveis CSS                               */
+/* -------------------------------------------------------------------------- */
+
 :root {
     /* Cores */
     --color-primary-blue: #5865f2; 
@@ -13,19 +16,20 @@
     --font-body: 'Open Sans', sans-serif;
 }
 
-/* GERAL (Reset e Base) */
+/* -------------------------------------------------------------------------- */
+/* II. GERAL (Reset e Base)                          */
+/* -------------------------------------------------------------------------- */
 
 * {
     padding: 0;
     margin: 0;
     border: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Essencial: padding e border não aumentam a largura/altura */
 }
 
 body {
-    /* Corrigindo o problema de largura: body se ajusta por padrão. */
     min-height: 100vh;
-    overflow-x: hidden; /* Evita rolagem horizontal */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
 }
 
 /* Tipografia Base */
@@ -56,7 +60,7 @@ p {
     font-size: 1rem;
     font-weight: 400;
     color: var(--color-dark);
-    line-height: 1.6; /* Melhora a legibilidade */
+    line-height: 1.6;
 }
 
 /* Layouts e Utilidades Reutilizáveis */
@@ -75,7 +79,10 @@ p {
     text-align: center;
 }
 
-/* BOTÕES (Classes Reutilizáveis) */
+/* -------------------------------------------------------------------------- */
+/* III. BOTÕES (Classes Reutilizáveis)                     */
+/* -------------------------------------------------------------------------- */
+
 .btn {
     width: 100%;
     height: 3.375rem;
@@ -84,7 +91,7 @@ p {
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.3s ease; 
-    font-family: var(--font-body); /* Adiciona a fonte Open Sans nos botões */
+    font-family: var(--font-body);
     font-weight: 600;
 }
 
@@ -104,29 +111,32 @@ p {
     transform: translateY(-2px);
 }
 
-/* HEADER */
+/* -------------------------------------------------------------------------- */
+/* IV. HEADER                                 */
+/* -------------------------------------------------------------------------- */
 
 header {
+    /* Imagem de fundo para mobile */
     background: url('/imagens/header-background-mobile.png') no-repeat center/cover;
     width: 100%;
     padding: 1.5rem 0; 
 }
 
 header .container {
-    /* O container controla a largura e o padding lateral */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; 
     text-align: center;
 }
 
 header #header-content h1 {
-    /* Ajusta para centralizar e melhorar o espaçamento */
     max-width: 17.375rem; 
     margin: 3rem auto 1.5rem auto; 
 }
 
-/* MAIN - Blocos de Conteúdo (Feature Blocks) */
+/* -------------------------------------------------------------------------- */
+/* V. MAIN (Blocos de Conteúdo/Feature Blocks)                */
+/* -------------------------------------------------------------------------- */
 
 .feature-block {
     padding: 2.5rem 0; 
@@ -134,7 +144,7 @@ header #header-content h1 {
 
 .feature-block .container {
     display: flex;
-    flex-direction: column; /* Padrão mobile: coluna */
+    flex-direction: column; 
     gap: 1.5rem; 
     align-items: center;
 }
@@ -148,22 +158,84 @@ header #header-content h1 {
    margin-bottom: 1rem;
 }
 
-/* FOOTER */
+/* -------------------------------------------------------------------------- */
+/* VI. FOOTER                                  */
+/* -------------------------------------------------------------------------- */
 
 footer {
     background-color: var(--color-dark);
-    padding: 2.5rem 0; 
+    padding: 0; /* Remove padding principal */
+    position: relative; 
+    overflow: hidden; 
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 }
 
-footer svg {
-    width: 10.125rem;
-    height: 2.8125rem;
+.footer-content {
+    /* Define o padding vertical para controlar a altura mínima do footer */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: 1rem 0 1rem; /* Padding reduzido para diminuir a altura */
 }
 
-/* MEDIA QUERIES - Desktop (min-width: 1280px) */
+.footer-decorative-image {
+    width: 100%; 
+    height: auto; /* Garante que a imagem seja responsiva */
+    display: block;
+    margin: 0; 
+}
+
+/* -------------------------------------------------------------------------- */
+/* VIII. COMPONENTES ADICIONAIS (Back to Top)     */
+/* -------------------------------------------------------------------------- */
+
+.back-to-top {
+    /* Posição Fixa: Fica visível mesmo com rolagem */
+    position: fixed;
+    bottom: 1.5rem; /* 24px do fundo */
+    right: 1.5rem;  /* 24px da direita */
+
+    /* Estilização */
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2.5rem; /* Centraliza o ícone verticalmente */
+    text-align: center;
+
+    /* Dimensões */
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%; /* Transforma em círculo */
+
+    /* Efeitos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+    z-index: 999; /* Garante que fique acima de todos os outros elementos */
+}
+
+.back-to-top:hover {
+    background-color: #7983f5; /* Uma cor um pouco mais clara ao passar o mouse */
+}
+
+/* Ocultar em telas menores que não precisam tanto, ou ajustar o tamanho */
+@media screen and (max-width: 768px) {
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* VII. MEDIA QUERIES - Desktop                         */
+/* -------------------------------------------------------------------------- */
 
 @media screen and (min-width: 1280px) {
     /* Tamanhos de Fonte */
@@ -177,6 +249,7 @@ footer svg {
     
     /* HEADER */
     header {
+        /* Imagem de fundo para desktop */
         background: url('/imagens/header-background.png') no-repeat center/cover;
         padding: 5rem 0; 
     }
@@ -192,7 +265,7 @@ footer svg {
     }
 
     .btn {
-        width: auto; 
+        width: auto; /* Remove largura 100% no desktop */
         margin-bottom: 0 !important;
     }
 
@@ -205,13 +278,13 @@ footer svg {
     .feature-block .container {
         flex-direction: row; /* Layout padrão desktop: linha */
         align-items: center;
-        gap: 4rem; /* Aumenta o espaçamento */
-        padding: 4rem 0; /* Aumenta o padding interno do container */
+        gap: 4rem; 
+        padding: 4rem 0; 
     }
 
     .feature-block .feature-info {
         flex: 1; 
-        max-width: 30rem; /* Limita a largura do texto para melhor leitura */
+        max-width: 30rem; 
     }
     
     .feature-block .feature-image {
@@ -223,13 +296,18 @@ footer svg {
     }
 
     .column-layout {
-        flex-direction: column; /* Layout de coluna para a seção de conexão */
+        flex-direction: column; 
         text-align: center;
         max-width: 65rem;
     }
     
     .column-layout .feature-info {
-        max-width: 48rem; /* Aumenta a largura do texto na seção de coluna */
+        max-width: 48rem; 
         margin-bottom: 2rem;
+    }
+
+    /* FOOTER - Desktop */
+    .footer-content {
+        padding: 2rem 0 2rem; 
     }
 }
